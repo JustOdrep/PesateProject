@@ -12,7 +12,9 @@ body {
     background-color: #675D50;
   }
 
-  .bg-beige {
+ 
+
+  #bg-beige, .bg-beige {
     background-color: #F3DEBA;
   }
 

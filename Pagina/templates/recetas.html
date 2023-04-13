@@ -4,53 +4,59 @@
 {%block content%}
 
 <!--TABLA-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+<form action="/recetas" method="post">
+
 <div class="contenedor">
-  <h1 class="display-6 mt-2">Agrega una receta:</h1>
+  <h1 class="display-6 mt-2 mb-3">Agrega una receta:</h1>
     <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Receta:</span>
-      </div>
-      <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+      {{form.receta.label(class_="input-group-text")}}
+
+      {{form.receta(class_="form-control")}}
     </div>
 
-  
-  <table class="table table-striped" id="tabla_receta">
-    <thead>
-      <tr>
-        <th scope="col">Ingrediente</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody id="tabla_recetada">
-      <tr>
-        <td>
-          <select class="form-select form-select-lg">
-            <option selected disabled>Selecciona un ingrediente</option>
-            {% for i in lista_productos %}
-            <option value={{i|safe}}>{{i|safe}}</option>
-            {{ i|safe }}
-            {% endfor %}
-          </select>
-        </td>
-        <td>
-          <input id="Ing_Cant" type="number" class="contenedor">
-        </td>
-        <td>
-          <a href="#" class="btn btn-danger btn-sm delete">
-            X
-          </a>  
-        </td>
-      </tr>
+    <table class="table table-striped" id="tabla_receta">
+      <thead>
+        <tr>
+          <th scope="col">Ingrediente</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody id="tabla_recetada">
+        <tr>
+          <td class="form-group">
+            {{form.ingrediente(class_="form-select form-select-lg")}}
+          </td>
+          <td class="form-group">
+            {{form.peso(class_="contenedor")}}
+          </td>
+          <td class="form-group">
+            <a href="#" class="btn btn-danger btn-sm delete">
+              X
+            </a>  
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-info mt-3" id="btn_add_fila">Añadir un ingrediente</button>
+      
 
-    </tbody>
-    
-  </table>
-  <div class="d-flex justify-content-between">
-    <button class="btn btn-info mt-3" id="btn_add_fila">Añadir un ingrediente</button>
-    <input type="submit" class="btn btn-success mt-3" value="Guardar receta">
-</div>
-
+      {{form.submit(class="btn btn-success mt-3")}}
+  </div>
+</form>
 </div>
 
 
@@ -63,30 +69,30 @@
 
     const row = document.createElement('tr')
 
-    
-    row.innerHTML = `
-    <tr>
-        <td>
-          <select class="form-select form-select-lg">
-            <option selected disabled>Selecciona un ingrediente</option>
-            {% for i in lista_productos %}
-            <option value={{i|safe}}>{{i|safe}}</option>
-            {{ i|safe }}
-            {% endfor %}
-          </select>
-        </td>
-        <td>
-          <input id="Ing_Cant" type="number" class="contenedor">
-        </td>
-        <td>
-          <a href="#" class="btn btn-danger btn-sm delete">
-            X
-          </a>  
-        </td>
-      </tr>
+    var ing_contador = 0 
+    row.innerHTML = 
     `
+    <tr>
+          <td class="form-group">
+            {{form.ingrediente(class_="form-select form-select-lg")}}
+          </td>
+          <td class="form-group">
+            {{form.peso(class_="contenedor")}}
+          </td>
+          <td class="form-group">
+            <a href="#" class="btn btn-danger btn-sm delete">
+              X
+            </a>  
+          </td>
+        </tr>
+    `
+/*
+   
+
+*/
+
+    ing_contador = ing_contador + 1
     tabla.appendChild(row);
 }
-
 </script>
 {%endblock content%}
