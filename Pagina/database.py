@@ -82,7 +82,7 @@ def updatear_precios():
 #updatear_precios()
 
 
-def buscar_ingrediente(nombre):
+def buscar_ingrediente(nombres):
     """
     Devuelve el  precio por gramo/unidad del ingrediente
     """
@@ -90,7 +90,7 @@ def buscar_ingrediente(nombre):
     #.Filer--> Filtro
     #.All todo
     #Lo va a queryear como vos lo inicializaste en __repr__
-    result = session.query(Ingredientes.precio).filter(Ingredientes.nombre==nombre).all()
+    result = session.query(Ingredientes.precio).filter(Ingredientes.nombre==nombres).all()
     #Primero loopeas por el primer resultado y dps el index 0 del primer resultado, si no te da error xq etas trabajando con otro tipo de dato 
     for r in result:
         precio_kg = int(r[0]) #PRECIO

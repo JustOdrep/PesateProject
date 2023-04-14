@@ -7,6 +7,7 @@ from wtforms.validators import DataRequired
 from webforms import RecetasForm, CalcularForm, BorrarRecetasForm, actualizador_recetas
 from dblue import dolar_hoy
 from database import Base, Ingredientes, agregar_ingrediente, updatear_precios, buscar_ingrediente
+import time
 
 
 
@@ -25,7 +26,7 @@ app.secret_key =b'_5#y2L"F4Q8z\n\xec]/'
 def home():
     title='Home'
     actualizador_recetas()
-    updatear_precios()
+    #updatear_precios() #Activar y desactivar si agregas un ingrediente nuevo.
     form = CalcularForm()
     ingredientes=None
     ingredientes_calculados = {}
@@ -35,6 +36,7 @@ def home():
 
 
     if request.method == "POST":
+        inicio = time.time()
         receta = request.form.get('recetas')
         #Loadea el diccionario con todas las recetas si existe, y lo crea si no 
         try:
@@ -45,6 +47,7 @@ def home():
             dict_recetas = {}
         #Este dict tiene los ingredientes de una receta en particular
         ingredientes = dict_recetas[receta]
+        dolar = dolar_hoy()
         for key, values in ingredientes.items():
             #La fx buscar_ingrediente returnea el precio del producto
             precio_scrap = buscar_ingrediente(key)
@@ -52,7 +55,7 @@ def home():
                 precio_pesos = int(precio_scrap) * int(values)
             else: #Los ingredientes que no son huevos estan scrapeados en 1000g o 1000ml
                 precio_pesos = int(precio_scrap) * int(values) / 1000
-                precio_usd = precio_pesos / dolar_hoy()
+                precio_usd = precio_pesos / dolar
             ingredientes_calculados[key] = {
                 'peso':values,
                 'precio_pesos':precio_pesos,
@@ -61,8 +64,8 @@ def home():
         #Por cada value en ing_calc.values. Buscar con su key 'precio_moneda', ponerlo en una lista y dps sumarlo
         total_pesos = sum([v['precio_pesos'] for v in ingredientes_calculados.values()])
         total_usd = sum([v['precio_usd'] for v in ingredientes_calculados.values()])
-        
-        
+        fin = time.time()
+        tiempo = fin- inicio
 
         
 
@@ -70,7 +73,7 @@ def home():
 
             
         #La key de ingrediente es harina y el value son 250gramos
-        return render_template('home.html', title=title, form = form, ingredientes_calculados=ingredientes_calculados, total_pesos= total_pesos, total_usd=total_usd)
+        return render_template('home.html', title=title, form = form, ingredientes_calculados=ingredientes_calculados, total_pesos= total_pesos, total_usd=total_usd, tiempo = tiempo)
     return render_template('home.html', title=title, form = form ,ingredientes_calculados=ingredientes_calculados)
 
 
