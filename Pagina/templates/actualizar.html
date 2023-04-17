@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <h1 class="display-6 mt-2 mb-3">Actualizar precios:</h1>
+
+    <div class="d-flex justify-content-between">
+        <div class="text">
+            <p>Clickea el boton verde para recargar los precios de los ingredientes.</p>
+            <p>No salgas de la pagina hasta que no te aparezca arriba una confirmacion azul!</p>
+        </div>
+        <form action="/actualizar" method="post">    
+            {{ form.submit(class="btn btn-success mt-3 ") }}
+        </form>
+    </div>  
+
+    <!-- Divide en 2 la lista de ingredientes-->
+    {% set half_len = (ingredientes|length / 2)|round|int %}
+
+    <div class="d-flex">
+        <!-- Primer tabla, usando la primer mitad de los ingredientes-->
+        <table class="table table-sm table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingrediente in ingredientes[:half_len+1] %}
+                    <tr>
+                        <td>{{ ingrediente.nombre }}</td>
+                        <td>{{ ingrediente.precio| pesos }}</td>
+                        <td><a href="{{ ingrediente.link }}" target="_blank">Link</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Segunda tabla, usando la segunda mitad de los ingredientes-->
+        <table class="table table-sm table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingrediente in ingredientes[half_len+1:] %}
+                    <tr>
+                        <td>{{ ingrediente.nombre }}</td>
+                        <td>{{ ingrediente.precio| pesos}}</td>
+                        <td><a href="{{ ingrediente.link }}" target="_blank">Link</a></td>
+                    </tr>
+                {% endfor %}
+                
+                <!-- Este if permite que si son impares los ingredientes, se alineen igual las tablas :D -->
+                {% if ingredientes|length % 2 == 1 %}
+                    <tr>
+                        <td>‎ </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

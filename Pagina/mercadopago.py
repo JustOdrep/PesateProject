@@ -72,7 +72,8 @@ nuevo ={
 'Avena': f'https://diaonline.supermercadosdia.com.ar/avena-instantanea-quaker-500-gr-292386/p',
 'Canela': 'https://diaonline.supermercadosdia.com.ar/canela-molida-alicante-25-gr-292667/p',
 'Chocolinas': 'https://diaonline.supermercadosdia.com.ar/galletitas-chocolinas-chocolate-262-gr-47932/p',
-'Okebon': 'https://diaonline.supermercadosdia.com.ar/galletitas-okebon-de-leche-273-gr-146571/p'
+'Okebon': 'https://diaonline.supermercadosdia.com.ar/galletitas-okebon-de-leche-273-gr-146571/p',
+'Yogurt Firme Vainilla': 'https://diaonline.supermercadosdia.com.ar/yogur-entero-yogurisimo-firme-vainilla-120-gr-239497/p'
 
 }
 
