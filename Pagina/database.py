@@ -11,21 +11,18 @@ class Ingredientes(Base):
     __tablename__="costos"
     # Define las columnas de la tabla con su nombre y tipo de dato
     nombre = Column("nombre", String, primary_key=True)
-    #link = Column("link", String)
-    #medida = Column("medida", Integer)
     precio = Column("precio", Integer)
+    link = Column("link", String, default = '')
     
     #Constructor de clases
-    def __init__(self, nombre,precio):
+    def __init__(self, nombre,precio, link):
         self.nombre = nombre
-       # self.link = link #Si desocultas estas filas, acordate de agregarlas con self
-        #self.medida = medida
         self.precio = precio
+        self.link = link
     
     #Define como se printea
     def __repr__(self):
-        return f"Ingrediente: {self.nombre} {self.precio} \n"
-
+        return f"{self.nombre} {self.precio} {self.link} \n"
 #Crea la base en sqlite
 engine = create_engine("sqlite:///mydb.db", echo=True)
 
@@ -38,16 +35,8 @@ Session = sessionmaker(bind=engine)
 # Crea una instancia de la sesión para comenzar a interactuar con la base de datos
 session = Session()
 
-#receta = Ingredientes('Harina','https://www.mercadolibre.com.ar/harina-morixe-0000-x-1kg/p/MLA19982335 ', 1000, 0)
 
-#session.add(receta)
-#session.commit()
-
-
-
-
-# Función para agregar un registro a la tabla Ingredientes
-def agregar_ingrediente(nombre, precio):
+def agregar_ingrediente(nombre, precio, url):
     """
     Agrega un nuevo ingrediente a la tabla
     """
@@ -57,9 +46,10 @@ def agregar_ingrediente(nombre, precio):
     if ingrediente_existente:
         # Si ya existe un registro con ese nombre, actualiza su precio
         ingrediente_existente.precio = precio
+        ingrediente_existente.link = url
     else:
         # Si no existe, crea un nuevo objeto Ingredientes con los valores recibidos como argumentos
-        nuevo_ingrediente = Ingredientes(nombre=nombre, precio=precio)
+        nuevo_ingrediente = Ingredientes(nombre=nombre, precio=precio, link=url)
         # Agrega el objeto a la sesión
         session.add(nuevo_ingrediente)
 
@@ -77,9 +67,7 @@ def updatear_precios():
         #La formula producto_precio returnea el producto con el precio en kg
         for producto, precio in producto_precio(producto, url).items():
             #Agrega a la tabla los productos con su precio
-            agregar_ingrediente(producto, precio)
-
-#updatear_precios()
+            agregar_ingrediente(producto, precio, url)
 
 
 def buscar_ingrediente(nombres):
@@ -97,3 +85,11 @@ def buscar_ingrediente(nombres):
         return precio_kg
 
 
+def mostrar_tabla():
+    """
+    Muestra TODOS los ingredientes ocn su nombre, precio y publicacion
+    """
+    result = session.query(Ingredientes).order_by(Ingredientes.nombre).all()
+    return result
+
+#updatear_precios()

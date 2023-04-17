@@ -4,9 +4,9 @@ import json
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, validators, SelectField, IntegerField, validators
 from wtforms.validators import DataRequired
-from webforms import RecetasForm, CalcularForm, BorrarRecetasForm, actualizador_recetas
+from webforms import RecetasForm, CalcularForm, BorrarRecetasForm, actualizador_recetas, ActualizarPrecios
 from dblue import dolar_hoy
-from database import Base, Ingredientes, agregar_ingrediente, updatear_precios, buscar_ingrediente
+from database import Base, Ingredientes, agregar_ingrediente, updatear_precios, buscar_ingrediente, mostrar_tabla
 import time
 
 
@@ -17,26 +17,24 @@ app.secret_key =b'_5#y2L"F4Q8z\n\xec]/'
 
 
 
-
-
+if __name__ == '__main__':
+    app.run(debug=True)
+dolar = dolar_hoy()
 
 #TODO: holaa
 @app.route("/")
 @app.route("/home" , methods=['GET','POST'])
 def home():
+    inicio = time.time()
+    choice = actualizador_recetas()
     title='Home'
-    actualizador_recetas()
     #updatear_precios() #Activar y desactivar si agregas un ingrediente nuevo.
     form = CalcularForm()
     ingredientes=None
-    ingredientes_calculados = {}
+    ingredientes_calculados = {} #Ingredientes calculados
     total_pesos = 0
     total_usd =0
-
-
-
     if request.method == "POST":
-        inicio = time.time()
         receta = request.form.get('recetas')
         #Loadea el diccionario con todas las recetas si existe, y lo crea si no 
         try:
@@ -47,7 +45,6 @@ def home():
             dict_recetas = {}
         #Este dict tiene los ingredientes de una receta en particular
         ingredientes = dict_recetas[receta]
-        dolar = dolar_hoy()
         for key, values in ingredientes.items():
             #La fx buscar_ingrediente returnea el precio del producto
             precio_scrap = buscar_ingrediente(key)
@@ -55,7 +52,9 @@ def home():
                 precio_pesos = int(precio_scrap) * int(values)
             else: #Los ingredientes que no son huevos estan scrapeados en 1000g o 1000ml
                 precio_pesos = int(precio_scrap) * int(values) / 1000
-                precio_usd = precio_pesos / dolar
+
+            precio_usd = precio_pesos / dolar
+            #Dentro del for loop, crea un diccionario donde cada key es un ingrediente y los values son el peso y precio de este.
             ingredientes_calculados[key] = {
                 'peso':values,
                 'precio_pesos':precio_pesos,
@@ -73,7 +72,7 @@ def home():
 
             
         #La key de ingrediente es harina y el value son 250gramos
-        return render_template('home.html', title=title, form = form, ingredientes_calculados=ingredientes_calculados, total_pesos= total_pesos, total_usd=total_usd, tiempo = tiempo)
+        return render_template('home.html', title=title, form = form, ingredientes_calculados=ingredientes_calculados, total_pesos= total_pesos, total_usd=total_usd)
     return render_template('home.html', title=title, form = form ,ingredientes_calculados=ingredientes_calculados)
 
 
@@ -111,6 +110,8 @@ def recetas():
         # Escribe el diccionario actualizado en el archivo "recetario.json"
         with open("recetario.json", "w") as f:
             json.dump(dict_recetas, f)
+        
+        actualizador_recetas() #Deberia actualizar las recetas de choice
 
         #Redirectea
         return redirect(url_for('recetas'))
@@ -118,8 +119,7 @@ def recetas():
 
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
 
 @app.route("/borrar", methods=['GET','POST'])
 def borrar():
@@ -148,10 +148,30 @@ def borrar():
     return render_template('borrar.html', title=title, form=form)
 
 
+
+
+@app.route("/actualizar", methods=['GET','POST'])
+def actualizar():
+    title='Actualizar Precios '
+    ingredientes = mostrar_tabla()
+ 
+    form= ActualizarPrecios()
+    if request.method == "POST":
+        flash(f'Precios Actualizados!', 'info' )    
+        updatear_precios()
+        return redirect(url_for('actualizar'))
+
+    return render_template('actualizar.html', title=title, form=form, ingredientes = ingredientes)
+
+
+
 @app.route("/about")
 def about():
     title='Acerca '
     return render_template('about.html', title=title)
+
+
+
 
 
 #Variables para jinja
@@ -168,3 +188,7 @@ def pesos(value):
 # Custom filter
 app.jinja_env.filters["usd"] = usd
 app.jinja_env.filters["pesos"] = pesos
+
+
+
+        

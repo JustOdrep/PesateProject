@@ -69,37 +69,13 @@ nuevo ={
 'Dulce de Leche Repostero': 'https://diaonline.supermercadosdia.com.ar/dulce-de-leche-repostero-la-serenisima-400-gr-227719/p',
 'Maiz Pisingallo': 'https://diaonline.supermercadosdia.com.ar/maiz-pisingallo-granero-400-gr-274326/p',
 'Cacao en polvo': 'https://www.boticadelpastelero.com.ar/producto/cacao-amargo-en-polvo-n56-x-1-kg-fenix/2494',
-'Avena': f'https://diaonline.supermercadosdia.com.ar/avena-instantanea-quaker-500-gr-292386/p'
+'Avena': f'https://diaonline.supermercadosdia.com.ar/avena-instantanea-quaker-500-gr-292386/p',
+'Canela': 'https://diaonline.supermercadosdia.com.ar/canela-molida-alicante-25-gr-292667/p',
+'Chocolinas': 'https://diaonline.supermercadosdia.com.ar/galletitas-chocolinas-chocolate-262-gr-47932/p',
+'Okebon': 'https://diaonline.supermercadosdia.com.ar/galletitas-okebon-de-leche-273-gr-146571/p'
 
 }
 
 
 
 
-
-
-#Estos links estan todos caidos
-dict_producto_link = {
-'Harina 0000': 'https://diaonline.supermercadosdia.com.ar/harina-0000-morixe-1-kg-258543/p',
-'Harina 000': 'https://diaonline.supermercadosdia.com.ar/harina-000-caserita-1-kg-54869/p',
-'Azúcar': 'https://diaonline.supermercadosdia.com.ar/azucar-light-puria-1-kg-46940/p',
-'Huevos': 'https://diaonline.supermercadosdia.com.ar/huevo-blanco-granja-loma-verde-6-unidades-51484/p',
-'Manteca': 'https://diaonline.supermercadosdia.com.ar/manteca-pakal-200-g-48107/p',
-'Levadura': 'https://diaonline.supermercadosdia.com.ar/levadura-fleischmann-seca-8-g-217732/p',
-'Bicarbonato de sodio': 'https://diaonline.supermercadosdia.com.ar/bicarbonato-de-sodio-efic-80-g-54474/p',
-'Polvo para hornear': 'https://diaonline.supermercadosdia.com.ar/polvo-royal-para-hornear-85-g-14874/p',
-'Sal': 'https://diaonline.supermercadosdia.com.ar/sal-finapureza-bolsa-500-g-31195/p',
-'Leche': 'https://diaonline.supermercadosdia.com.ar/leche-entera-la-serenisima-botella-1-l-13949/p',
-'Cacao en polvo': 'https://diaonline.supermercadosdia.com.ar/cacao-amargo-morixe-250-g-48710/p',
-'Vainilla': 'https://diaonline.supermercadosdia.com.ar/vainilla-liquida-nielsen-200-cc-41039/p',
-'Nueces': 'https://diaonline.supermercadosdia.com.ar/nueces-grande-chicas-la-morena-100-g-16760/p',
-'Chocolate': 'https://diaonline.supermercadosdia.com.ar/chocolate-semiamargo-arcor-tableta-100-g-450/p',
-'Crema de leche': 'https://diaonline.supermercadosdia.com.ar/crema-de-leche-ser-200-cc-24292/p',
-'Queso crema': 'https://diaonline.supermercadosdia.com.ar/queso-crema-la-serenisima-290-g-13952/p',
-'Azúcar impalpable': 'https://diaonline.supermercadosdia.com.ar/azucar-impalpable-bolsa-1-kg-57317/p',
-'Miel': 'https://diaonline.supermercadosdia.com.ar/miel-lata-500-g-15257/p',
-'Maizena': 'https://diaonline.supermercadosdia.com.ar/maizena-efic-120-g-56396/p',
-'Melaza': f'https://diaonline.supermercadosdia.com.ar/melaza-sofia-bolsa-500-g-16540/p',
-'Aceite': f'https://diaonline.supermercadosdia.com.ar/aceite-de-girasol-cocinero-1-l-13752/p',
-'Avena': f'https://diaonline.supermercadosdia.com.ar/avena-en-hojuelas-efic-500-g-56378/p'
-}

@@ -13,6 +13,7 @@ FORM PARA CALCULAR RECETAS
 #Abre el recetario.json para ver las recetas guardadas asi las pone en choice
 def actualizador_recetas():
     global choice
+    choice = ['No hay recetas guardadas']
     try:
         with open("recetario.json", "r") as f:
             dict_recetas = json.load(f)
@@ -21,10 +22,18 @@ def actualizador_recetas():
     except FileNotFoundError:
         choice= ['No hay recetas guardadas']
 
-    choice = dict_recetas.keys()
+    choice = list(dict_recetas.keys())
+    return choice
+
 actualizador_recetas()
 class CalcularForm(FlaskForm):
-    recetas=SelectField('Receta', choices=choice)
+    recetas = SelectField('Receta', choices= choice)
+
+
+    #Init sirve para que se actualice tood el timepo la lista de recetas
+    def __init__(self, *args, **kwargs):
+            super(CalcularForm, self).__init__(*args, **kwargs)
+            self.recetas.choices = choice
 
 
 
@@ -42,8 +51,19 @@ class RecetasForm(FlaskForm):
 
 
 class BorrarRecetasForm(FlaskForm):
+    actualizador_recetas()
+    
     receta=SelectField('Receta', choices=choice)
+
+    #Init sirve para que se actualice tood el timepo la lista de recetas
+    def __init__(self, *args, **kwargs):
+            super(BorrarRecetasForm, self).__init__(*args, **kwargs)
+            self.receta.choices = choice
     submit = SubmitField('Borrar Receta')
+
+class ActualizarPrecios(FlaskForm):
+    submit = SubmitField('Actualizar Precios')
+
 
 
 
