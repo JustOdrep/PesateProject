@@ -25,6 +25,9 @@
 
     <!-- Divide en 2 la lista de ingredientes-->
     {% set half_len = (ingredientes|length / 2)|round|int %}
+    {% if ingredientes|length % 2 == 1 %}
+        {set half_len = half_len+1}
+    {% endif %}
 
     <div class="d-flex">
         <!-- Primer tabla, usando la primer mitad de los ingredientes-->
@@ -37,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for ingrediente in ingredientes[:half_len+1] %}
+                {% for ingrediente in ingredientes[:half_len] %}
                     <tr>
                         <td>{{ ingrediente.nombre }}</td>
                         <td>{{ ingrediente.precio| pesos }}</td>
@@ -57,7 +60,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for ingrediente in ingredientes[half_len+1:] %}
+                {% for ingrediente in ingredientes[half_len:] %}
                     <tr>
                         <td>{{ ingrediente.nombre }}</td>
                         <td>{{ ingrediente.precio| pesos}}</td>
