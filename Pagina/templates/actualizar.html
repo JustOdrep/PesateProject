@@ -15,8 +15,8 @@
 
     <div class="d-flex justify-content-between">
         <div class="text">
-            <p>Clickea el boton verde para recargar los precios de los ingredientes.</p>
-            <p>No salgas de la pagina hasta que no te aparezca arriba una confirmacion azul!</p>
+            <p>Clickea el boton verde para recargar los precios de los ingredientes, esto puede tardar un minuto.</p>
+            <p>No salgas de la pagina hasta que no aparezca arriba una confirmacion azul!</p>
         </div>
         <form action="/actualizar" method="post">    
             {{ form.submit(class="btn btn-success mt-3 ") }}
@@ -25,6 +25,7 @@
 
     <!-- Divide en 2 la lista de ingredientes-->
     {% set half_len = (ingredientes|length / 2)|round|int %}
+    <!--Si la cantidad de ingredientes es impar, este codigo permite que la tabla se vea bien igual -->
     {% if ingredientes|length % 2 == 1 %}
         {set half_len = half_len+1}
     {% endif %}
