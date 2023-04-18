@@ -36,6 +36,7 @@ def home():
     total_usd =0
     if request.method == "POST":
         receta = request.form.get('recetas')
+        unidades = int(request.form.get('unidades'))
         #Loadea el diccionario con todas las recetas si existe, y lo crea si no 
         try:
             with open("recetario.json", "r") as f:
@@ -56,9 +57,9 @@ def home():
             precio_usd = precio_pesos / dolar
             #Dentro del for loop, crea un diccionario donde cada key es un ingrediente y los values son el peso y precio de este.
             ingredientes_calculados[key] = {
-                'peso':values,
-                'precio_pesos':precio_pesos,
-                'precio_usd': precio_usd
+                'peso':int(values) *unidades ,
+                'precio_pesos':precio_pesos *unidades ,
+                'precio_usd': precio_usd *unidades 
             }
         #Por cada value en ing_calc.values. Buscar con su key 'precio_moneda', ponerlo en una lista y dps sumarlo
         total_pesos = sum([v['precio_pesos'] for v in ingredientes_calculados.values()])

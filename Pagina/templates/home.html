@@ -1,15 +1,25 @@
 {% extends "layout.html" %}
+<script>
+  function enviarFormulario() {
+    document.getElementById('formulario').submit();
+  }
+  </script>
 
 {%block content%}
 <div class="contenedor">
 <!--SELECTOR DE RECETA-->
-  <form action="/home" method="post">
-    <h1 class="display-6 mt-2 mb-3">Seleccione una receta:</h1>
-    <div class="input-group mb-3">
-      {{form.recetas.label(class_="input-group-text")}}
 
-      {{form.recetas(class_="form-control", onchange="this.form.submit()")}}
-    </div>
+  <form action="/home" method="post" id="formulario">
+    <h1 class="display-6 mt-2 mb-3">Seleccione una receta:</h1>
+    <div class="input-group mb-3 form-row">
+
+        {{form.recetas.label(class_="input-group-text")}}
+
+        {{form.recetas(class_="form-control", onchange="this.form.submit()",)}}
+          {{form.unidades.label(class_="input-group-text")}}
+
+        {{form.unidades(class_="form-control col-2", onchange="this.form.submit()", autofocus=true)}}</div>
+        
   </form>
 
   </select>
@@ -60,6 +70,7 @@
   </table>
 
 </div>
+
 {%endblock content%}
 
 
