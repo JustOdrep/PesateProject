@@ -1,7 +1,20 @@
 
 # Pesate  ![hola](Pagina/static/Logo-png3.png)
-Pesate documents recipes and displays the cost of their ingredients in both Argentine pesos and US dollars.
+### Pesate documents recipes and displays the cost of their ingredients in both Argentine pesos and US dollars.
 
+The idea for the project came from a daily reality that I was experiencing. I run a pastry business where I sell products such as cookies, brownies, cinnamon rolls, and other baked goods. Every time I sold a product, I had to check how much I spent on the supermarket and charge accordingly. Due to my need and passion for technology, I decided to create a webpage that allows users to store recipes and calculates the cost of their ingredients. 
+
+Additionally, I wanted it to allow you to select how many times you want to make that recipe. For example, when I make cookies, I like to make the same recipe three times at once so I can freeze some for later.
+
+Due to the unstable currency in my country, I also decided to calculate the price in dollars to have a better record of my expenses.
+
+The project  took me approximately 20 days and I had to learn the following technologies:
+
+* *SQLAlchemy* to store ingredients. I used a relational table because I wanted all ingredients to have a name, price, and purchase link.
+* *WTForm* to simplify the forms.
+* I had to refresh my knowledge of *JavaScript* in order to create functions that enable the addition or removal of ingredients from a recipe
+* *JSON* to store recipes. Due to the variability of recipes, I felt that a non-relational database was the best way to store them.
+* *Flask,  Jinja and Bootstrap* to develop the web-page 
 ## Table of Contents
 
 - [About](#about)
