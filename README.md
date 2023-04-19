@@ -89,7 +89,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 * updatear_precio: Calls all the above functions by first calling producto_precio for web-scraping, then adding the price to the table with agregar_ingrediente.
 buscar_ingrediente: Returns the price per kg/lt/unit. This function is used on the home tab when you select an ingredient
 #### Dblue
-*Uses the DolarSi API to get the selling value for the Dollar Blue.
+* Uses the DolarSi API to get the selling value for the Dollar Blue.
 
 #### MercadoPago
 * Shows the ingredient list in a dictionary with the keys being the product and the values the URL to webscrap
