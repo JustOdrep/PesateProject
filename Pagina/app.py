@@ -25,56 +25,54 @@ dolar = dolar_hoy()
 @app.route("/")
 @app.route("/home" , methods=['GET','POST'])
 def home():
-    inicio = time.time()
     choice = actualizador_recetas()
     title='Home'
-    #updatear_precios() #Activar y desactivar si agregas un ingrediente nuevo.
     form = CalcularForm()
     ingredientes=None
     ingredientes_calculados = {} #Ingredientes calculados
     total_pesos = 0
     total_usd =0
+    #Loadea el diccionario con todas las recetas si existe, y lo crea si no 
+    try:
+        with open("recetario.json", "r") as f:
+            dict_recetas = json.load(f)
+    # Si el archivo no existe, crear un diccionario vacío
+    except FileNotFoundError:
+        dict_recetas = {}
     if request.method == "POST":
         receta = request.form.get('recetas')
         unidades = int(request.form.get('unidades'))
-        #Loadea el diccionario con todas las recetas si existe, y lo crea si no 
-        try:
-            with open("recetario.json", "r") as f:
-                dict_recetas = json.load(f)
-        # Si el archivo no existe, crear un diccionario vacío
-        except FileNotFoundError:
-            dict_recetas = {}
-        #Este dict tiene los ingredientes de una receta en particular
-        ingredientes = dict_recetas[receta]
-        for key, values in ingredientes.items():
-            #La fx buscar_ingrediente returnea el precio del producto
-            precio_scrap = buscar_ingrediente(key)
-            if key == 'Huevos': #Los huevos son los unicos que estan scrapeados por unidad
-                precio_pesos = int(precio_scrap) * int(values)
-            else: #Los ingredientes que no son huevos estan scrapeados en 1000g o 1000ml
-                precio_pesos = int(precio_scrap) * int(values) / 1000
+    #Este else, permite que cuando carga la pagina aparezca ya cargada la primer receta del json 
+    else:
+        receta= next(iter(dict_recetas))
+        unidades = 1
+    #Este dict tiene los ingredientes de una receta en particular
+    ingredientes = dict_recetas[receta]
+    for key, values in ingredientes.items():
+        #La fx buscar_ingrediente returnea el precio del producto
+        precio_scrap = buscar_ingrediente(key)
+        if key == 'Huevos': #Los huevos son los unicos que estan scrapeados por unidad
+            precio_pesos = int(precio_scrap) * int(values)
+        else: #Los ingredientes que no son huevos estan scrapeados en 1000g o 1000ml
+            precio_pesos = int(precio_scrap) * int(values) / 1000
 
-            precio_usd = precio_pesos / dolar
-            #Dentro del for loop, crea un diccionario donde cada key es un ingrediente y los values son el peso y precio de este.
-            ingredientes_calculados[key] = {
-                'peso':int(values) *unidades ,
-                'precio_pesos':precio_pesos *unidades ,
-                'precio_usd': precio_usd *unidades 
-            }
-        #Por cada value en ing_calc.values. Buscar con su key 'precio_moneda', ponerlo en una lista y dps sumarlo
-        total_pesos = sum([v['precio_pesos'] for v in ingredientes_calculados.values()])
-        total_usd = sum([v['precio_usd'] for v in ingredientes_calculados.values()])
-        fin = time.time()
-        tiempo = fin- inicio
+        precio_usd = precio_pesos / dolar
+        #Dentro del for loop, crea un diccionario donde cada key es un ingrediente y los values son el peso y precio de este.
+        ingredientes_calculados[key] = {
+            'peso':int(values) *unidades ,
+            'precio_pesos':precio_pesos *unidades ,
+            'precio_usd': precio_usd *unidades 
+        }
+    #Por cada value en ing_calc.values. Buscar con su key 'precio_moneda', ponerlo en una lista y dps sumarlo
+    total_pesos = sum([v['precio_pesos'] for v in ingredientes_calculados.values()])
+    total_usd = sum([v['precio_usd'] for v in ingredientes_calculados.values()])
 
-        
-
-        
+    
 
             
         #La key de ingrediente es harina y el value son 250gramos
-        return render_template('home.html', title=title, form = form, ingredientes_calculados=ingredientes_calculados, total_pesos= total_pesos, total_usd=total_usd)
-    return render_template('home.html', title=title, form = form ,ingredientes_calculados=ingredientes_calculados)
+    return render_template('home.html', title=title, form = form, ingredientes_calculados=ingredientes_calculados, total_pesos= total_pesos, total_usd=total_usd)
+    return render_template('home.html', title=title, form = form ,ingredientes_calculados=ingredientes_calculados,total_pesos= total_pesos, total_usd=total_usd)
 
 
 

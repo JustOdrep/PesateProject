@@ -27,8 +27,8 @@ def actualizador_recetas():
 
 actualizador_recetas()
 class CalcularForm(FlaskForm):
-    recetas = SelectField('Receta', choices= choice, default='' )
-    unidades = IntegerField('Unidades', validators=[NumberRange(min=1)], default=1 )
+    recetas = SelectField('Receta', choices= choice, default='')
+    unidades = IntegerField('Unidades', validators=[NumberRange(min=1)], default=1)
 
 
     #Init sirve para que se actualice tood el timepo la lista de recetas
