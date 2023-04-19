@@ -92,4 +92,3 @@ def mostrar_tabla():
     result = session.query(Ingredientes).order_by(Ingredientes.nombre).all()
     return result
 
-#updatear_precios()

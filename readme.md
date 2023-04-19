@@ -37,16 +37,17 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 
  ### Calculadora
  * **English:** Calculator.
- * Upon selecting a recipe, shows the cost of the ingredientes.
- * You can select how many times you want to cook the recipe and see the cost of its ingredients.
+ * Calculates the cost of ingredients for a selected recipe.
+ * Allows the user to input the quantity of times they want to cook the recipe, and calculates the total cost accordingly.
 
 
 
 
 ### Agregar recetas
 * **English:** Add recipe.
-* Adds a recipe to the database.
-* You can choose from a list of 30 ingredients for your recipe.
+* Adds a new recipe to the database.
+* Offers a list of 30 ingredients to choose from.
+
 
 
 
@@ -54,29 +55,51 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 
 ### Borrar recetas
  * **English:** Delete recipe.
-* Deletes a recipe from the database.
+* Removes a recipe from the database.
 
 
 ### Precios
 * **English:** Prices
-* Shows a table with he columns:
-    * Name: Name of the ingredient.
-    * Price: Price per kg/lt or unit in the case of eggs.
-    * Link: Link of the supermarket page.  
+*Shows a table with the following columns:
+    *Name: Ingredient name.
+    *Price: Price per kg/liter or unit (for eggs).
+    *Link: Link to the supermarket page.
 
-<!--
+
 ## Files
 
 ### Py files
-#### App
-List of defined functions:
-* home
-* 
 #### Database
+* Created with SQLAlchemy. 
+* agregar_ingrediente: Adds an ingredient to the table
+* producto_precio:  Web-scrapes the price of a product given its name and URL. Returns a dictionary with the product as the key and the price as the value.
+* updatear_precio: Calls all the above functions by first calling producto_precio for web-scraping, then adding the price to the table with agregar_ingrediente.
+buscar_ingrediente: Returns the price per kg/lt/unit. This function is used on the home tab when you select an ingredient
 #### Dblue
-#### MercadoPago
-#### Webforms
+*Uses the DolarSi API to get the selling value for the Dollar Blue.
 
-### HTML templates
- -->
+#### MercadoPago
+* Shows the ingredient list in a dictionary with the keys being the product and the values the URL to webscrap
+* The list of ingredients is pre-defined, covering most pastry recipe ingredients.
+* There is a limitation to which products are on the Dia Page, for example the cocoa powder had to be web-scrapped from another market
+
+
+
+#### Webforms
+In all webforms i had the problem of having to update the choices of recipes. I had a rare "bug", the recipes only updated when i saved the .py file, i spent days trying to figure out how to make the user to save a file
+The solution was actually very simple, with an __init__ function the choices update automatically
+
+### HTML Templates
+
+#### Recetas
+* I decided to use a select form for the ingredients for my limitation of not knowing how to have a list of user-inputs 
+
+### Precios
+* Two tables are used in the "Prices" feature to minimize scrolling for the 30 ingredients.
+
+
+Thanks for reading!
+
+
+
 
