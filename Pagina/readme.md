@@ -1,5 +1,5 @@
 
-# Pesate  ![hola](static/logo-png3.png)
+# Pesate  ![hola](static/Logo-png3.png)
 Pesate documents recipes and displays the cost of their ingredients in both Argentine pesos and US dollars.
 
 ## Table of Contents
