@@ -22,7 +22,7 @@
             {{ form.submit(class="btn btn-success mt-3 ") }}
         </form>
     </div>  
-
+{{dolar|int}}
     <!-- Divide en 2 la lista de ingredientes-->
     {% set half_len = (ingredientes|length / 2)|round|int %}
     <!--Si la cantidad de ingredientes es impar, este codigo permite que la tabla se vea bien igual -->
@@ -32,11 +32,12 @@
 
     <div class="d-flex">
         <!-- Primer tabla, usando la primer mitad de los ingredientes-->
-        <table class="table table-sm table-striped mt-3">
+        <table class="table table-sm table-striped mt-3 mr-1">
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Precio</th>
+                    <th>Precio ARG</th>
+                    <th>Precio USD</th>
                     <th>Link</th>
                 </tr>
             </thead>
@@ -45,6 +46,8 @@
                     <tr>
                         <td>{{ ingrediente.nombre }}</td>
                         <td>{{ ingrediente.precio| pesos }}</td>
+                        <td>{{ (ingrediente.precio|int/dolar)|usd}}</td>
+
                         <td><a href="{{ ingrediente.link }}" target="_blank">Link</a></td>
                     </tr>
                 {% endfor %}
@@ -56,16 +59,19 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Precio</th>
+                    <th>Precio ARG</th>
+                    <th>Precio USD</th>
                     <th>Link</th>
                 </tr>
             </thead>
             <tbody>
                 {% for ingrediente in ingredientes[half_len:] %}
                     <tr>
-                        <td>{{ ingrediente.nombre }}</td>
-                        <td>{{ ingrediente.precio| pesos}}</td>
-                        <td><a href="{{ ingrediente.link }}" target="_blank">Link</a></td>
+                        <td >{{ ingrediente.nombre }}</td>
+                        <td >{{ ingrediente.precio| pesos}}</td>
+                        <td > {{ (ingrediente.precio|int/dolar)|usd}}</td>
+
+                        <td ><a href="{{ ingrediente.link }}" target="_blank">Link</a></td>
                     </tr>
                 {% endfor %}
                 

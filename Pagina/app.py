@@ -153,14 +153,14 @@ def borrar():
 def actualizar():
     title='Actualizar Precios '
     ingredientes = mostrar_tabla()
- 
+    dolar= dolar_hoy()
     form= ActualizarPrecios()
     if request.method == "POST":
         flash(f'Precios Actualizados!', 'info' )    
         updatear_precios()
         return redirect(url_for('actualizar'))
 
-    return render_template('actualizar.html', title=title, form=form, ingredientes = ingredientes)
+    return render_template('actualizar.html', title=title, form=form, ingredientes = ingredientes, dolar=dolar)
 
 
 
