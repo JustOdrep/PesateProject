@@ -26,7 +26,7 @@ link
 ## Getting Started
 1. Clone it from github
 2. In the command line:
-    pip install -r requirements.txt
+        pip install -r requirements.txt
 3. In the command line :
     cd Pagina
     py -m flask run 
