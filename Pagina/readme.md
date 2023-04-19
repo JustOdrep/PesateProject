@@ -8,7 +8,7 @@ Pesate documents recipes and displays the cost of their ingredients in both Arge
 - [Demo](#demo) 
 - [Getting Started](#getting_started)
 - [Usage](#usage)
-- [Contributing](#contributing)
+- [Files](#files)
 
 ## About
 The purpose of this application is to document recipes and display the cost of their ingredients in both Argentine pesos and US dollars.
@@ -20,13 +20,12 @@ My goal is to help people who sell pastry recipes generate extra income by using
 
 ## Demo
 
-As this started as a CS50 Final Proyect, here is a short video to present it:
-link
+See my demo in youtube with this [link](https://youtu.be/9vpQ5jjcg7Q).
 
 ## Getting Started
 1. Clone it from github
 2. In the command line:
-        pip install -r requirements.txt
+        pip install -r requirements.txt 
 3. In the command line :
     cd Pagina
     py -m flask run 
@@ -64,4 +63,20 @@ There are 4 different pages in the app, as you can see in the navigation bar:
     * Name: Name of the ingredient.
     * Price: Price per kg/lt or unit in the case of eggs.
     * Link: Link of the supermarket page.  
+
+<!--
+## Files
+
+### Py files
+#### App
+List of defined functions:
+* home
+* 
+#### Database
+#### Dblue
+#### MercadoPago
+#### Webforms
+
+### HTML templates
+ -->
 
