@@ -22,7 +22,6 @@
             {{ form.submit(class="btn btn-success mt-3 ") }}
         </form>
     </div>  
-{{dolar|int}}
     <!-- Divide en 2 la lista de ingredientes-->
     {% set half_len = (ingredientes|length / 2)|round|int %}
     <!--Si la cantidad de ingredientes es impar, este codigo permite que la tabla se vea bien igual -->
