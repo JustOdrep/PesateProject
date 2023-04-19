@@ -1,5 +1,5 @@
 
-# Pesate  ![hola](static/Logo-png3.png)
+# Pesate  ![hola](Pagina/static/Logo-png3.png)
 Pesate documents recipes and displays the cost of their ingredients in both Argentine pesos and US dollars.
 
 ## Table of Contents
@@ -32,7 +32,7 @@ See my demo in youtube with this [link](https://youtu.be/9vpQ5jjcg7Q).
 
 ## Usage
 There are 4 different pages in the app, as you can see in the navigation bar:
-    ![Navbar](static/NavBar.png)
+    ![Navbar](Pagina/static/NavBar.png)
 
 
  ### Calculadora
