@@ -199,13 +199,14 @@ The solution was actually very simple, with an __init__ function the choices upd
 ## Issues
 * Although Dia offers a wide range of ingredients, there are still some products that they don't sell. For instance, my banana oat pie recipe requires the use of bananas as a key ingredient, but unfortunately, fruits are not available for purchase at Dia.
 * The testing was incomplete, as it did not cover scenarios such as the deletion of all recipes or the saving of an empty recipe, leaving uncertainties about the application's behavior in such situations.
-* The user has to *manually* update the prices in the prices section. I made this decision because updating automatically the prices cost 70 seconds, so i decided to let the user choose when to update them.
-* No section to edit a recipe. If you want to edit a recipe you have to delete it and add it again
+* In the prices section of the app, the user is required to update the prices manually. This decision was made to prioritize efficiency as automatic updates were found to take approximately 70 seconds to complete. By allowing users to update the prices manually, they are given the flexibility to decide when to initiate the update process, thereby optimizing their experience with the app.
+* At the moment, there is no specific section on the app to directly edit a recipe. This means that if you want to make any changes to a recipe, you will have to delete the existing one and add it again with the updated information. While this process can be a bit time-consuming and inconvenient, it is currently the only way to make any modifications to a recipe that has already been added to the app.
 * If you add a recipe with the same name as one already saved, the latter will be overwritten instead of asking you to choose another name.
 
 The current state of the page is functional for my needs, however, I will continue to try to address the listed issues over time.
 
 Thanks for reading! <3
+Pesate.
 
 
 
