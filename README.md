@@ -27,10 +27,12 @@ The project  took me approximately 20 days and I had to learn the following tech
 - [Issues](#issues)
 
 ## About
-The purpose of this application is to help people who sell pastry recipes generate extra income by using a tool that will help them manage their budget.
-This tool is  useful for business owners for anyone in Argentina who loves baking and wants to keep track of their expenses. 
-
 By using the "Pesate" application, users can easily calculate the cost of ingredients, store recipes, and view the updated prices of ingredients in both Argentine pesos and US dollars.
+
+
+The purpose of this application is to help people who sell pastry recipes generate extra income by using a tool that will help them manage their budget.
+
+This tool is  useful for anyone in Argentina who loves baking and wants to keep track of their expenses. 
 
 The price of the products in Pesos is webscrapped from the page of [Supermercados Dia](https://diaonline.supermercadosdia.com.ar/?gad=1&gclid=CjwKCAjwov6hBhBsEiwAvrvN6NS0ZnDmQilgYjsKAb0UYmBX2N6nWiIsBG7AIFovtPaoPyRUnCpXtBoCRdYQAvD_BwE&gclsrc=aw.ds).
 The [DolarSi](https://www.dolarsi.com/) API facilitates the extraction of the selling price value of the 'blue dollar' 
@@ -78,6 +80,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 
  ### Calculadora
  * **English:** Calculator.
+ * This is the home page, which is the default landing page when the user opens the app, it shows the first recipe in the dictionary 
  * Calculates the cost of ingredients for a selected recipe.
  * Allows the user to input the quantity of times they want to cook the recipe, and calculates the total cost accordingly.
  * Provides a convenient way to estimate the cost of ingredients for any given recipe.
@@ -145,13 +148,22 @@ The helper functions are :
 
 #### Database.py
 * Created with SQLAlchemy.
+* In the database, there is a table named "Ingredientes" with the following columns: ingredient name as a string, ingredient price as an integer, and purchase link as a string.
+* I decided to save the link so that the user can check in the prices page which product i selected. For example, flour has three very popular brands,  I wanted the user to be able see which brand I personally chose as the one that is saved in the database.
+
+
+
+
+
 * Database.py contains 4 functions: 
     * *agregar_ingrediente:* Adds an ingredient to the table
     * *producto_precio:*  Web-scrapes the price of a product given its name and URL. Returns a dictionary with the product as the key and the price as the value.
     * *updatear_precio:* Calls all the above functions by first calling producto_precio for web-scraping, then adding the price to the table with agregar_ingrediente.
     *buscar_ingrediente:* Querys for the ingredient name and returns the price per kg/lt/unit. This function is used on the home tab when you select an ingredient
+
 #### Dblue.py
-* Uses the DolarSi API to get the selling value for the Dollar Blue.
+* The DolarSi API provides a simple and easy-to-use interface for retrieving the current exchange rates for various currencies in Argentina, including the selling value for the Dollar Blue.
+* I used the requests library to make the API request and the json library to parse the JSON response. 
 
 #### MercadoPago.py
 * Shows the ingredient list in a dictionary with the keys being the product and the values the URL to webscrap
@@ -163,6 +175,7 @@ The helper functions are :
 #### Webforms
 In all webforms i had the problem of having to update the choices of recipes. I had a rare "bug", the recipes only updated when i saved the .py file, i spent days trying to figure out how to make it so the user can save the .py file
 The solution was actually very simple, with an __init__ function the choices update automatically 
+
 
 ### HTML Templates
 
