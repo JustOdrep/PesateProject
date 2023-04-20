@@ -1,5 +1,8 @@
 
 # Pesate  ![hola](Pagina/static/Logo-png3.png)
+#### Video Demo:  <https://youtu.be/9vpQ5jjcg7Q>
+#### Description: 
+
 ### Pesate documents recipes and displays the cost of their ingredients in both Argentine pesos and US dollars.
 
 The idea for the project came from a daily reality that I was experiencing. I run a pastry business where I sell products such as cookies, brownies, cinnamon rolls, and other baked goods. Every time I sold a product, I had to check how much I spent on the supermarket and charge accordingly. Due to my need and passion for technology, I decided to create a webpage that allows users to store recipes and calculates the cost of their ingredients. 
