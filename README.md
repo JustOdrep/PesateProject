@@ -41,30 +41,35 @@ My goal is to help people who sell pastry recipes generate extra income by using
 
 ## Demo
 
-See my demo in youtube with this [link](https://youtu.be/9vpQ5jjcg7Q).
+In this YouTube video, I present a detailed demonstration of a web page I created. The first half of the video features a PowerPoint presentation where I introduce the purpose and design of the page. In the second half, I switch to a screen recording of myself navigating through the actual page and demonstrating its features. Overall, the video serves as a comprehensive showcase of the page and its functionality. You can find the link to the video here: [link](https://youtu.be/9vpQ5jjcg7Q).
 
 ## Getting Started
-1. Clone it from github
-2. Create a virtual environment
+1. Go to the GitHub repository and click on the "Clone or download" button.
+2. Open your terminal and navigate to the directory where you want to clone the project.
+3. Create a virtual environment by running the command
     ```
-    py -m virtualenv myenv
-    ```
-
-3. Open the vritual environment
-    ```
-    myenv/bin/activate
+    py -m virtualenv venv
     ```
 
-4. Install the needed packages
+4. Activate the virtual environment by running the command
+    ```
+    venv/bin/activate
+    ```
+    or
+    ```
+    venv/Scripts/activate
+    ```
+5. Run the command to install the needed packages
     ```
     pip install -r requirements.txt 
     ```
 
-5. In the command line :
+6. In the command line :
     ```
     cd Pagina
     py -m flask run
     ```
+7. The application should start running, and you can access it by opening a web browser and navigating to http://localhost:5000/.
 
 ## Usage
 There are 4 different pages in the app, as you can see in the navigation bar:
@@ -75,6 +80,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
  * **English:** Calculator.
  * Calculates the cost of ingredients for a selected recipe.
  * Allows the user to input the quantity of times they want to cook the recipe, and calculates the total cost accordingly.
+ * Provides a convenient way to estimate the cost of ingredients for any given recipe.
 
 
 
@@ -84,6 +90,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 * Adds a new recipe to the database.
 * Offers a list of 30 ingredients to choose from.
 * Shows a green flash to show that the recipe was correctly added.
+* Provides an easy way to expand the recipe database with new recipes.
 
 
 
@@ -95,7 +102,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
  * **English:** Delete recipe.
 * Removes a recipe from the database.
 * Shows a red flash to indicate which recipe was deleted.
-
+* Provides a simple way to manage the recipe database and remove any unwanted recipes.
 
 ### Precios
 * **English:** Prices
@@ -136,16 +143,17 @@ The helper functions are :
 * Dollars have a number
 * Example: 15.5 = $15,5  
 
-#### Database
-* Created with SQLAlchemy. 
-* agregar_ingrediente: Adds an ingredient to the table
-* producto_precio:  Web-scrapes the price of a product given its name and URL. Returns a dictionary with the product as the key and the price as the value.
-* updatear_precio: Calls all the above functions by first calling producto_precio for web-scraping, then adding the price to the table with agregar_ingrediente.
-buscar_ingrediente: Querys for the ingredient name and returns the price per kg/lt/unit. This function is used on the home tab when you select an ingredient
-#### Dblue
+#### Database.py
+* Created with SQLAlchemy.
+* Database.py contains 4 functions: 
+    * *agregar_ingrediente:* Adds an ingredient to the table
+    * *producto_precio:*  Web-scrapes the price of a product given its name and URL. Returns a dictionary with the product as the key and the price as the value.
+    * *updatear_precio:* Calls all the above functions by first calling producto_precio for web-scraping, then adding the price to the table with agregar_ingrediente.
+    *buscar_ingrediente:* Querys for the ingredient name and returns the price per kg/lt/unit. This function is used on the home tab when you select an ingredient
+#### Dblue.py
 * Uses the DolarSi API to get the selling value for the Dollar Blue.
 
-#### MercadoPago
+#### MercadoPago.py
 * Shows the ingredient list in a dictionary with the keys being the product and the values the URL to webscrap
 * The list of ingredients is pre-defined, covering most pastry recipe ingredients.
 * There is a limitation to which products are on the Dia Page, for example the cocoa powder had to be web-scrapped from another market
@@ -179,8 +187,10 @@ The solution was actually very simple, with an __init__ function the choices upd
 * Although Dia offers a wide range of ingredients, there are still some products that they don't sell. For instance, my banana oat pie recipe requires the use of bananas as a key ingredient, but unfortunately, fruits are not available for purchase at Dia.
 * The testing was incomplete, as it did not cover scenarios such as the deletion of all recipes or the saving of an empty recipe, leaving uncertainties about the application's behavior in such situations.
 * The user has to *manually* update the prices in the prices section. I made this decision because updating automatically the prices cost 70 seconds, so i decided to let the user choose when to update them.
+* No section to edit a recipe. If you want to edit a recipe you have to delete it and add it again
+* If you add a recipe with the same name as one already saved, the latter will be overwritten instead of asking you to choose another name.
 
-
+The current state of the page is functional for my needs, however, I will continue to try to address the listed issues over time.
 
 Thanks for reading! <3
 
