@@ -20,8 +20,8 @@ def dolar_hoy():
             "venta": "179.00"
         }
     """
-    compra = dolar_blue['casa']['compra']
-    compra = float(compra.replace(',', '.'))
+    venta = dolar_blue['casa']['venta']
+    venta = float(venta.replace(',', '.'))
 
-    return compra
+    return venta
 
