@@ -12,13 +12,27 @@ def producto_precio(producto, url):
     soup = BeautifulSoup(response.content, 'html.parser')
     
     #El cacao amargo no lo venden en dia asi que tiene un scrapping aparte
-    if producto == 'Cacao en polvo':
+    if 'botica' in url:
         price_element = soup.find('p', {'class': 'product-detail-price'})
         if price_element:
             price = price_element.text.strip()
             #El strip de arriba te devuelve un string : $ 4,320
             price = int(price.replace("$", "").replace(",", "")) #Arregla el string
             return {producto : price}
+    #Los quesos tienen scrapping aparte
+    elif 'santicheese' in url:
+        #
+        price_element = soup.find(class_="price").string.replace("$", "").replace(".", "")
+        price_element = int(price_element)
+        #Esta pagina muestra el precio de los 300gramos, hay que convertirlo eso al precio por kg
+        price = 1000*price_element/300
+        return {producto:price}
+    elif 'newgarden' in url:
+        price_element = soup.find(class_="price").string.replace("$", "").replace(".", "")
+        price = price_element.split(sep=',')[0]
+
+        return {producto:price}
+    #Resto de los scrappings en Supermercados Dia
     else:
         price_element = soup.find('span', {'class': 'vtex-product-specifications-1-x-specificationValue vtex-product-specifications-1-x-specificationValue--first vtex-product-specifications-1-x-specificationValue--last'})
 
@@ -73,8 +87,12 @@ nuevo ={
 'Canela': 'https://diaonline.supermercadosdia.com.ar/canela-molida-alicante-25-gr-292667/p',
 'Chocolinas': 'https://diaonline.supermercadosdia.com.ar/galletitas-chocolinas-chocolate-262-gr-47932/p',
 'Okebon': 'https://diaonline.supermercadosdia.com.ar/galletitas-okebon-de-leche-273-gr-146571/p',
-'Yogurt Firme Vainilla': 'https://diaonline.supermercadosdia.com.ar/yogur-entero-yogurisimo-firme-vainilla-120-gr-239497/p'
-
+'Yogurt Firme Vainilla': 'https://diaonline.supermercadosdia.com.ar/yogur-entero-yogurisimo-firme-vainilla-120-gr-239497/p',
+'Banana': 'https://diaonline.supermercadosdia.com.ar/banana-x-1-kg-90110/p',
+'Queso Duro: Reggianito': 'https://santicheese.com/collections/duros/products/reggianito-300g',
+'Queso Semiduro: Gouda': 'https://santicheese.com/collections/semiduros/products/gouda-300g',
+'Gelatina sin sabor': 'https://www.boticadelpastelero.com.ar/producto/gelatina-sin-sabor-x-14-gr-royal/14790',
+'Fécula de Mandioca': 'https://newgarden.com.ar/fecula-de-mandioca-ranchito-x-1-kg-sin-tacc.html '
 }
 
 

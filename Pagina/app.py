@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired
 from webforms import RecetasForm, CalcularForm, BorrarRecetasForm, actualizador_recetas, ActualizarPrecios
 from dblue import dolar_hoy
 from database import Base, Ingredientes, agregar_ingrediente, updatear_precios, buscar_ingrediente, mostrar_tabla
-import time
+import webbrowser
 
 
 
@@ -16,9 +16,11 @@ app = Flask(__name__)
 app.secret_key =b'_5#y2L"F4Q8z\n\xec]/'
 
 
+webbrowser.open("http://127.0.0.1:5000/")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
+
 dolar = dolar_hoy()
 
 #TODO: holaa

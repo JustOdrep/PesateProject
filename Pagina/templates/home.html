@@ -8,7 +8,6 @@
 {%block content%}
 <div class="contenedor">
 <!--SELECTOR DE RECETA-->
-
   <form action="/home" method="post" id="formulario">
     <h1 class="display-6 mt-2 mb-3">Seleccione una receta:</h1>
     <div class="input-group mb-3 form-row">
@@ -34,6 +33,7 @@
       </tr>
     </thead>
     <tbody>
+      
       {% if ingredientes_calculados %}
     
       {%for key, value in ingredientes_calculados.items()%}
