@@ -1,30 +1,20 @@
 
 # Pesate  ![hola](Pagina/static/Logo-png3.png)
 #### Video Demo:  <https://youtu.be/9vpQ5jjcg7Q>
-#### Description: 
-
-
-
-
-
 
 ### Pesate documents recipes and displays the cost of their ingredients in both Argentine pesos and US dollars.
 
-The idea for the project came from a daily reality that I was experiencing. I run a pastry business where I sell products such as cookies, brownies, cinnamon rolls, and other baked goods. Every time I sold a product, I had to check how much I spent on the supermarket and charge accordingly. Due to my need and passion for technology, I decided to create a webpage that allows users to store recipes and calculates the cost of their ingredients. 
-
-Additionally, I wanted it to allow you to select how many times you want to make that recipe. For example, when I make cookies, I like to make the same recipe three times at once so I can freeze some for later.
-
-Due to the unstable currency in my country, I also decided to calculate the price in dollars to have a better record of my expenses.
-
-The project  took me approximately 20 days and I had to learn the following technologies:
+The project took me 20 days and I had to use the following technologies:
 
 * *SQLAlchemy* to store ingredients. I used a relational table because I wanted all ingredients to have a name, price, and purchase link.
-* *WTForm* helped a lot in the process of creating and handling forms on the web page
 * I had to refresh my knowledge of *JavaScript* in order to create functions that enable the addition or removal of ingredients from a recipe
 * *JSON* to store recipes. Due to the variability of recipes, I felt that a non-relational database was the best way to store them.
  
 * *Flask,  Jinja* help for building web applications
 * *Bootstrap* to help in the styling and responsivness of the page 
+
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)<space><space>![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)<space><space>![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 ## Table of Contents
 
 - [About](#about)
@@ -51,7 +41,8 @@ My goal is to help people who sell pastry recipes generate extra income by using
 
 ## Demo
 
-In this YouTube video, I present a detailed demonstration of a web page I created. The first half of the video features a PowerPoint presentation where I introduce the purpose and design of the page. In the second half, I switch to a screen recording of myself navigating through the actual page and demonstrating its features. Overall, the video serves as a comprehensive showcase of the page and its functionality. You can find the link to the video here: [link](https://youtu.be/9vpQ5jjcg7Q).
+In this YouTube video, I present a detailed demonstration of a web page I created. The first half of the video features a PowerPoint presentation where I introduce the purpose and design of the page. In the second half, I switch to a screen recording of myself navigating through the actual page and demonstrating its features.
+[Watch it here!](https://youtu.be/9vpQ5jjcg7Q)
 
 ## Getting Started
 1. Go to the GitHub repository and click on the "Clone or download" button.
@@ -205,7 +196,6 @@ The solution was actually very simple, with an __init__ function the choices upd
 
 
 ## Issues
-* Although Dia offers a wide range of ingredients, there are still some products that they don't sell. For instance, my banana oat pie recipe requires the use of bananas as a key ingredient, but unfortunately, fruits are not available for purchase at Dia.
 * The testing was incomplete, as it did not cover scenarios such as the deletion of all recipes or the saving of an empty recipe, leaving uncertainties about the application's behavior in such situations.
 * In the prices section of the app, the user is required to update the prices manually. This decision was made to prioritize efficiency as automatic updates were found to take approximately 70 seconds to complete. By allowing users to update the prices manually, they are given the flexibility to decide when to initiate the update process, thereby optimizing their experience with the app.
 * At the moment, there is no specific section on the app to directly edit a recipe. This means that if you want to make any changes to a recipe, you will have to delete the existing one and add it again with the updated information. While this process can be a bit time-consuming and inconvenient, it is currently the only way to make any modifications to a recipe that has already been added to the app.
@@ -216,7 +206,6 @@ The current state of the page is functional for my needs, however, I will contin
 Thanks for reading! <3
 Pesate.
 
-The program keeps saying my readmes are to short....
 
 
 
