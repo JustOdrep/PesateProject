@@ -1,6 +1,5 @@
 
 # Pesate  ![hola](Pagina/static/Logo-png3.png)
-#### Video Demo:  <https://youtu.be/9vpQ5jjcg7Q>
 
 ### Pesate documents recipes and displays the cost of their ingredients in both Argentine pesos and US dollars.
 
@@ -15,6 +14,8 @@ The project took me 20 days and I had to use the following technologies:
 
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)<space><space>![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)<space><space>![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+***
+
 ## Table of Contents
 
 - [About](#about)
@@ -23,6 +24,8 @@ The project took me 20 days and I had to use the following technologies:
 - [Usage](#usage)
 - [Files](#files)
 - [Issues](#issues)
+
+***
 
 ## About
 By using the "Pesate" application, users can easily calculate the cost of ingredients, store recipes, and view the updated prices of ingredients in both Argentine pesos and US dollars.
@@ -38,11 +41,15 @@ The [DolarSi](https://www.dolarsi.com/) API facilitates the extraction of the se
 My goal is to help people who sell pastry recipes generate extra income by using a tool that will help them manage their budget.
 
 
+***
 
 ## Demo
 
-In this YouTube video, I present a detailed demonstration of a web page I created. The first half of the video features a PowerPoint presentation where I introduce the purpose and design of the page. In the second half, I switch to a screen recording of myself navigating through the actual page and demonstrating its features.
+The first half of the video features a PowerPoint presentation where I introduce the purpose and design of the page.
+In the second half, I switch to a screen recording of myself navigating through the actual page and demonstrating its features.
 [Watch it here!](https://youtu.be/9vpQ5jjcg7Q)
+
+***
 
 ## Getting Started
 1. Go to the GitHub repository and click on the "Clone or download" button.
@@ -71,7 +78,7 @@ In this YouTube video, I present a detailed demonstration of a web page I create
     py -m flask run
     ```
 7. The application should start running, and you can access it by opening a web browser and navigating to http://localhost:5000/.
-
+***
 ## Usage
 There are 4 different pages in the app, as you can see in the navigation bar:
     ![Navbar](Pagina/static/NavBar.png)
@@ -86,7 +93,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 
 
 
-
+***
 ### Agregar recetas
 * **English:** Add recipe.
 * Adds a new recipe to the database.
@@ -99,13 +106,14 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 
 
 
-
+***
 ### Borrar recetas
  * **English:** Delete recipe.
 * Removes a recipe from the database.
 * Shows a red flash to indicate which recipe was deleted.
 * Provides a simple way to manage the recipe database and remove any unwanted recipes.
 
+***
 ### Precios
 * **English:** Prices
 * Shows a table with the following columns:
