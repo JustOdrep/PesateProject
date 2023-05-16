@@ -91,6 +91,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
  * Allows the user to input the quantity of times they want to cook the recipe, and calculates the total cost accordingly.
  * Provides a convenient way to estimate the cost of ingredients for any given recipe.
 
+    ![Navbar](Pagina/static/Calculadora.png)
 
 
 ***
@@ -101,6 +102,7 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 * Shows a green flash to show that the recipe was correctly added.
 * Provides an easy way to expand the recipe database with new recipes.
 
+    ![Agregar](Pagina/static/Agregar.png)
 
 
 
@@ -113,6 +115,9 @@ There are 4 different pages in the app, as you can see in the navigation bar:
 * Shows a red flash to indicate which recipe was deleted.
 * Provides a simple way to manage the recipe database and remove any unwanted recipes.
 
+    ![Borrar](Pagina/static/Borrar.png)
+
+
 ***
 ### Precios
 * **English:** Prices
@@ -121,6 +126,8 @@ There are 4 different pages in the app, as you can see in the navigation bar:
     * Price: Price per kg/liter or unit (for eggs). Both in Pesos and Dollars
     * Link: Link to the supermarket page.
 * The button "Actualizar Precios" calls the "updatear_precio" function, explained down below. This event takes from 40 seconds to 1 minute
+
+    ![Precios](Pagina/static/Precios.png)
 
 
 ## Files
