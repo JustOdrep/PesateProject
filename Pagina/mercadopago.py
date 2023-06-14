@@ -26,6 +26,10 @@ def producto_precio(producto, url):
         price_element = int(price_element)
         #Esta pagina muestra el precio de los 300gramos, hay que convertirlo eso al precio por kg
         price = 1000*price_element/300
+
+        #Santicheese tiene un coste mucho mas inflado q mi queseria de confianza, pero mi queseria no tiene pagina asi que tengo que improvisar
+        #Multiplicando 0.6 se acerca mas al precio de mi queseria
+        price= price * 0.6
         return {producto:price}
     elif 'newgarden' in url:
         price_element = soup.find(class_="price").string.replace("$", "").replace(".", "")
@@ -41,6 +45,8 @@ def producto_precio(producto, url):
         return {producto : price}
     else:
         print(f"No se pudo encontrar el precio de {producto}")
+        price = 0
+        return {producto : price}
     
 
 
@@ -76,7 +82,6 @@ nuevo ={
 'Queso crema': 'https://diaonline.supermercadosdia.com.ar/queso-casancrem-entero-480-gr-172938/p',
 'Azúcar impalpable': 'https://diaonline.supermercadosdia.com.ar/azucar-impalpable-dia-250-gr-60282/p',
 'Miel': 'https://diaonline.supermercadosdia.com.ar/miel-de-abejas-dia-210-gr-24050/p',
-'Maizena': 'https://diaonline.supermercadosdia.com.ar/almidon-de-maiz-maizena-sin-tacc-550-gr-279845/p',
 'Aceite': 'https://diaonline.supermercadosdia.com.ar/aceite-de-girasol-natura-15-lts-78856/p',
 'Azucar Rubia':'https://diaonline.supermercadosdia.com.ar/azucar-rubia-mascabo-ledesma-800-gr-263408/p',
 'Harina Leudante':'https://diaonline.supermercadosdia.com.ar/harina-leudante-morixe-1-kg-258551/p',
@@ -92,7 +97,8 @@ nuevo ={
 'Queso Duro: Reggianito': 'https://santicheese.com/collections/duros/products/reggianito-300g',
 'Queso Semiduro: Gouda': 'https://santicheese.com/collections/semiduros/products/gouda-300g',
 'Gelatina sin sabor': 'https://www.boticadelpastelero.com.ar/producto/gelatina-sin-sabor-x-14-gr-royal/14790',
-'Fécula de Mandioca': 'https://newgarden.com.ar/fecula-de-mandioca-ranchito-x-1-kg-sin-tacc.html '
+'Fécula de Mandioca': 'https://newgarden.com.ar/fecula-de-mandioca-ranchito-x-1-kg-sin-tacc.html ',
+'Maizena': 'https://newgarden.com.ar/fecula-de-maiz-yin-yang-x-500-g.html'
 }
 
 
